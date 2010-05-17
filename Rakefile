@@ -5,13 +5,12 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "gitback"
-    gem.summary = %Q{TODO: one-line summary of your gem}
-    gem.description = %Q{TODO: longer description of your gem}
+    gem.summary = %Q{A simple ruby library for backing up files to git}
+    gem.description = %Q{Provide a list of files and/or directories and gitback will copy them to your git repo, commit and push when there are changes.}
     gem.email = "brycethornton@gmail.com"
     gem.homepage = "http://github.com/brycethornton/gitback"
     gem.authors = ["Bryce Thornton"]
-    gem.add_development_dependency "thoughtbot-shoulda", ">= 0"
-    # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
+    gem.add_dependency "grit", ">= 2.0.0"
   end
   Jeweler::GemcutterTasks.new
 rescue LoadError
