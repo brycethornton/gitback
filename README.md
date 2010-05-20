@@ -1,13 +1,15 @@
 Gitback
 ====
 
+Do you have backups of your production web/mail/db configs? crontabs?
+
+How fast could you configure a production machine if everything was lost?
+
 Gitback allows you to version arbitrary files and/or directories in a git
 repository.  You just need to include the gem and write a brief ruby script
 that indicates the files/directories you'd like to backup.  Then, run the
 script via cron.  Gitback will take care of a adding/commiting/pushing whenever
 your files are modified.
-
-The typical usage for this is backing up config files.
 
 
 ## Requirements ###############################################################
@@ -18,7 +20,7 @@ The typical usage for this is backing up config files.
 
 ## Install ####################################################################
 
-    $ gem install gitback -s http://gemcutter.org
+    $ gem install gitback
 
 ## Usage ######################################################################
 
@@ -29,32 +31,21 @@ Here's a basic example of a script using gitback:
 
     Gitback::Repository.new '/var/config-backup/' do |repo|
       repo.backup '/opt/nginx/conf/nginx.conf'
+      repo.backup '/etc/mysql/'
+      repo.backup '/etc/memcached.conf'
+      repo.backup '/etc/ssh/sshd_config'
+      repo.backup '/var/spool/cron/crontabs/'
     end
 
-This will check /opt/nginx/conf/nginx.conf for changes.  If the file has
-changed, gitback will commit a new version.
+This will check these files for additions/changes.  If a file has been added or
+changed, gitback will commit it.
 
-This nginx config file would be saved to the following location:
+For example, the nginx config file would be saved to the following location:
 
     /var/config-backup/opt/nginx/conf/nginx.conf
 
-Everything starts with instantiating a new `Gitback::Repository` object. The
-first parameter is the path to the git repository you'd like to backup to. The
-second parameter is a block indicating the files/directories you'd like to
-backup.
-
-
-### Directory support
-
-In addition to basic files, directory paths can also be backed up:
-
-    Gitback::Repository.new '/var/config-backup/' do |repo|
-      repo.backup '/opt/nginx/conf/nginx.conf'
-      repo.backup '/etc/mysql/'
-    end
-
-Notice that '/etc/mysql' is a directory.  Gitback will copy everything within
-that directory into the git repository.
+Notice that '/etc/mysql' is a directory.  Gitback accepts directories and will
+copy everything within that directory into the git repository.
 
 
 ### Namespaces
