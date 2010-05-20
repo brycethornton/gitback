@@ -78,6 +78,23 @@ class TestGitback < Test::Unit::TestCase
 
       assert_files(files)
     end
+
+    should "deal with symlinks" do
+      # Create a symlink
+      linked_file = "#{@dirname}/data/linked.txt"
+      File.symlink("#{@dirname}/data/testing.txt", linked_file)
+
+      Gitback::Repository.new @local_path do |repo|
+        repo.backup linked_file
+      end
+
+      files = [linked_file]
+
+      assert_files(files)
+
+      # Delete the link for future tests
+      File.delete(linked_file)
+    end
   end
 
   def assert_files(file_array)
