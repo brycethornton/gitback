@@ -11,17 +11,11 @@ begin
     gem.homepage = "http://github.com/brycethornton/gitback"
     gem.authors = ["Bryce Thornton"]
     gem.add_dependency "grit", ">= 2.0.0"
+    gem.add_development_dependency "shoulda"
   end
   Jeweler::GemcutterTasks.new
 rescue LoadError
   puts "Jeweler (or a dependency) not available. Install it with: gem install jeweler"
-end
-
-require 'rake/testtask'
-Rake::TestTask.new(:test) do |test|
-  test.libs << 'lib' << 'test'
-  test.pattern = 'test/**/test_*.rb'
-  test.verbose = true
 end
 
 begin

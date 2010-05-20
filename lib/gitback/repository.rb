@@ -38,7 +38,7 @@ module Gitback
 
         # Make sure the path exists in the repo
         if !File.exists?(dirname)
-          FileUtils.mkpath(dirname)
+          FileUtils.mkdir_p(dirname)
         end
 
         # Copy the file(s) to the repo
