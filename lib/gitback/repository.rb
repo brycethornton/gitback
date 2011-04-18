@@ -95,7 +95,7 @@ module Gitback
         if commit_result !~ /working directory clean/
           if @remote
             puts "Pushing repository changes..."
-            @repo.git.push({}, @remote, @branch)
+            @repo.git.native(:push, {}, @remote, @branch)
           end
         else
           puts "No changes committed."

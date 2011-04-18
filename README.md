@@ -14,8 +14,8 @@ your files are modified.
 
 ## Requirements ###############################################################
 
-* git (http://git-scm.com) tested with 1.6.0.4
-* grit (http://github.com/mojombo/grit) 2.0.0 or higher
+* git (http://git-scm.com) tested with 1.7.4
+* grit (http://github.com/mojombo/grit) tested with 2.4.1
 
 
 ## Install ####################################################################
