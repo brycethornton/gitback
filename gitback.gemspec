@@ -4,7 +4,7 @@ require "gitback/version"
 
 Gem::Specification.new do |s|
   s.name      = "gitback"
-  s.version   = "0.1.1"
+  s.version   = Gitback::VERSION
   s.platform  = Gem::Platform::RUBY
   s.authors   = ["Bryce Thornton"]
   s.email     = ["brycethornton@gmail.com"]
