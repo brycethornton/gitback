@@ -1,5 +1,4 @@
 require 'fileutils'
-require 'ftools'
 require 'grit'
 include Grit
 
