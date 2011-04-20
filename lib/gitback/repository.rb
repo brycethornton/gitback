@@ -43,6 +43,12 @@ module Gitback
 
         # Copy the file(s) to the repo
         if File.exists?(file_path)
+          # Make sure we only copy the directory contents,
+          # not the directory itself.
+          if File.directory?(file_path)
+            file_path += '/.'
+          end
+
           # We pass remove_destination to avoid issues with symlinks
           FileUtils.cp_r file_path, dest_path, :remove_destination => true
         else
